@@ -1,13 +1,18 @@
-function diKembalikan(totalUang,uangKembali) {
-    let kembalian =totalUang - uangKembali;
-    let nominal = [50000, 10000, 5000, 2000, 1000];
-    for (let i = 0; i < nominal.length; i++) {
-        while (kembalian >= nominal[i]) {
-            console.log(nominal[i]);
-            kembalian -= nominal[i];
-        }
-    }
+let totalUang = 50000;
+let totalBeli = 24000;
+let kembalian = totalUang - totalBeli;
+let nominal = [50000, 10000, 5000, 2000, 1000];
+
+if (kembalian < 0) {
+    console.log("Uang tidak cukup");
+} else {
+    console.log("Kembalian: " + kembalian);
 }
 
-diKembalikan(50000,38000);
-
+for (let i = 0; i < nominal.length; i++) {
+    let jumlahLembar = Math.floor(kembalian / nominal[i]);
+    if (jumlahLembar > 0) {
+        console.log(nominal[i] + " " +jumlahLembar + " lembar");
+        kembalian -= nominal[i] * jumlahLembar;
+    }
+}
